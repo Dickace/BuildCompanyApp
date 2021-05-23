@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="BuildCompany.View.TeamsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Name="team"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <DrawingImage x:Key="DeleteIcon">
+            <DrawingImage.Drawing>
+                <DrawingGroup ClipGeometry="M0,0 V91 H91 V0 H0 Z">
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Opacity="1">
+                            <GeometryDrawing Brush="#FF647F94" Geometry="F1 M91,91z M0,0z M16.142,90.613L68.39,90.613C71.808,90.613,74.587,87.834,74.587,84.418L74.587,29.52 16.142,29.518 16.142,90.613z" />
+                            <GeometryDrawing Brush="#FF95AEC2" Geometry="F1 M91,91z M0,0z M58.431,42.701C58.431,41.154 59.685,39.9 61.232,39.9 62.779,39.9 64.035,41.154 64.035,42.701L64.035,79.996C64.035,81.545 62.779,82.797 61.232,82.797 59.685,82.797 58.431,81.545 58.431,79.996L58.431,42.701z M42.56,42.701C42.56,41.154 43.814,39.9 45.363,39.9 46.908,39.9 48.162,41.154 48.162,42.701L48.162,79.996C48.162,81.545 46.908,82.797 45.363,82.797 43.814,82.797 42.56,81.545 42.56,79.996L42.56,42.701z M26.688,42.701C26.688,41.154 27.944,39.9 29.489,39.9 31.036,39.9 32.292,41.154 32.292,42.701L32.292,79.996C32.292,81.545 31.036,82.797 29.489,82.797 27.944,82.797 26.688,81.545 26.688,79.996L26.688,42.701z" />
+                            <GeometryDrawing Brush="#FF6EC4A7">
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="12.056,14.479,66.611,9.438" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF647F94">
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="36.259,0.99,18.205,7.887" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Бригады" FontSize="34" HorizontalAlignment="Center"/>
+
+            <ListBox ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam}"  Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <StackPanel Margin="5" Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 2 20 2" Text="Номер бригады:"/>
+                                    <TextBlock Margin="2" Text="{Binding TeamNumber}" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 2 20 2" Text="ФИО руководителя бригадой:"/>
+                                    <ComboBox 
+                                          
+                                        Margin="2"
+                                        BorderThickness="0"
+                                        IsEnabled="False"
+                                        ItemsSource="{Binding DataContext.EmployeeViewModels, ElementName=team}"
+                                        DisplayMemberPath="EmployeeName" 
+                                        SelectedValue="{Binding Path=IdEmployee}" 
+                                        SelectedValuePath="Model.IdEmployee"  
+                          />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 2 20 2" Text="Статус бригады:"/>
+                                    <ComboBox
+                                        Margin="2"
+                                        BorderThickness="0"
+                                        IsEnabled="False"
+                          ItemsSource="{Binding DataContext.TeamStatusViewModels, ElementName=team}"
+                          DisplayMemberPath="TeamStatusName" 
+                          SelectedValue="{Binding Path=IdTeamStatus}" 
+                          SelectedValuePath="Model.IdTeamStatus"  
+                          />
+                                </StackPanel>
+                               
+
+
+
+
+
+
+                            </StackPanel>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+               
+
+            </ListBox>
+
+
+            <GridSplitter Grid.Row="2" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <StackPanel Grid.Row="3" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  Grid.Column="0"  Content="Показать занятые бригады" Height="40" Command="{Binding ShowActiveCommand}"></Button>
+                    <Button  Grid.Column="1"  Content="Показать незанятые бригады" Command="{Binding ShowNoneActiveCommand}"></Button>
+                    
+                </Grid>
+                <Button Content="Добавить бригаду" Height="40" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedTeam}">
+
+                </Button>
+                <Button Content="Удалить бригаду" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedTeam}" Height="40"/>
+                
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Column="1" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Номер Бригады:"/>
+                <TextBox Margin="2" Text="{Binding SelectedTeam.TeamNumber}" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="ФИО руководителя бригадой:"/>
+                <ComboBox
+                                        Margin="2"
+                       
+                          ItemsSource="{Binding EmployeeViewModels}"
+                          DisplayMemberPath="EmployeeName" 
+                          SelectedValue="{Binding SelectedTeam.IdEmployee}" 
+                          SelectedValuePath="Model.IdEmployee"  
+                          />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Статус бригады:"/>
+                <ComboBox
+                                        Margin="2"
+                       
+                          ItemsSource="{Binding TeamStatusViewModels}"
+                          DisplayMemberPath="TeamStatusName" 
+                          SelectedValue="{Binding SelectedTeam.IdTeamStatus}" 
+                          SelectedValuePath="Model.IdTeamStatus"  
+                          />
+            </StackPanel>
+
+
+
+
+        </StackPanel>
+        <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedTeam}" Height="40"/>
+    </Grid>
+</UserControl>

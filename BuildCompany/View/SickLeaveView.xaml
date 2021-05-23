@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="BuildCompany.View.SickLeaveView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BuildCompany.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Name="SickLeave">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Больничные" FontSize="34" HorizontalAlignment="Center"/>
+
+            <ListBox ItemsSource="{Binding SickleaveDatas}" SelectedItem="{Binding SelectedSickLeaveData}"  Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <StackPanel Margin="5" Orientation="Vertical">
+                               
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="Статус больничного:"/>
+                                    <ComboBox 
+                                          
+                                        Margin="2"
+                                        BorderThickness="0"
+                                        IsEnabled="False"
+                                        ItemsSource="{Binding DataContext.SickleaveStatusViewModels, ElementName=SickLeave}"
+                                        DisplayMemberPath="SickLeaveStatusName" 
+                                        SelectedValue="{Binding Path=IdSickLeaveDataStatus}" 
+                                        SelectedValuePath="Model.IdSickLeaveStatus"  
+                          />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="ФИО Сотрудника:"/>
+                                    <ComboBox
+                                        Margin="2"
+                                        BorderThickness="0"
+                                        IsEnabled="False"
+                          ItemsSource="{Binding DataContext.EmployeeViewModels, ElementName=SickLeave}"
+                          DisplayMemberPath="EmployeeName" 
+                          SelectedValue="{Binding Path=IdEmployee}" 
+                          SelectedValuePath="Model.IdEmployee"  
+                          />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="Оплачивамый больничный:"/>
+                                    <CheckBox IsEnabled="False" Margin="2" IsChecked="{Binding Path=PaidSickLeave }" />
+
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="Номер больничного листа:"/>
+                                    <TextBlock Margin="2" Text="{Binding Path=SickLeaveNumber}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="Дата старта больничного:"/>
+                                    <TextBlock  Margin="2" Text="{Binding Path=SickLeaveStartDate, StringFormat=dd-MM-yyyy}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2 2 20 2" Text="Дата окончания больничного:"/>
+                                    <TextBlock  Margin="2" Text="{Binding Path=SickLeaveEndDate, StringFormat=dd-MM-yyyy}"/>
+                                </StackPanel>
+
+
+
+
+
+                            </StackPanel>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+            </ListBox>
+
+
+            <GridSplitter Grid.Row="2" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <StackPanel Grid.Row="3" >
+                <Button Content="Отправить в больничный" Height="40" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedSickLeaveData}">
+
+                </Button>
+                <Button Content="Удалить данные о больничном" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedSickLeaveData}" Height="40"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Column="1" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Статус больничного:"/>
+                <ComboBox Margin="2" 
+                          ItemsSource="{Binding SickleaveStatusViewModels}"
+                          DisplayMemberPath="SickLeaveStatusName" 
+                          SelectedValue="{Binding SelectedSickLeaveData.IdSickLeaveDataStatus}" 
+                          SelectedValuePath="Model.IdSickLeaveStatus"  
+                          />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="ФИО Сотрудника:"/>
+                <ComboBox Margin="2" 
+                          ItemsSource="{Binding EmployeeViewModels}"
+                          DisplayMemberPath="EmployeeName" 
+                          SelectedValue="{Binding SelectedSickLeaveData.IdEmployee}" 
+                          SelectedValuePath="Model.IdEmployee"  
+                          />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Оплачивамый больничный:"/>
+                <CheckBox Margin="2" IsChecked="{Binding Path=SelectedSickLeaveData.PaidSickLeave }" />
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Номер больничного листа:"/>
+                <TextBox Margin="2" Text="{Binding Path=SelectedSickLeaveData.SickLeaveNumber}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Дата старта больничного:"/>
+                
+                <DatePicker SelectedDateFormat="Short" SelectedDate="{Binding Path=SelectedSickLeaveData.SickLeaveStartDate}">
+
+                </DatePicker>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2 2 20 2" Text="Дата окончания больничного:"/>
+                
+                <DatePicker SelectedDateFormat="Short" SelectedDate="{Binding Path=SelectedSickLeaveData.SickLeaveEndDate}">
+
+                </DatePicker>
+            </StackPanel>
+
+
+        </StackPanel>
+        <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedSickLeaveData}" Height="40"/>
+    </Grid>
+</UserControl>
