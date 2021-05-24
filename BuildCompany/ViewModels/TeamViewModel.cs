@@ -42,8 +42,11 @@ namespace BuildCompany
                         Teams.Add(team);
                         Db.Teams.Add(team);
                         Db.SaveChanges();
+                        Db.Teams.Load();
+                        
                         DataRefresh();
-                        SelectedTeam = team;
+                        var nteams = Db.Teams.OrderBy(nteam => nteam.IdTeam);
+                        SelectedTeam = nteams.Last(); 
                     }
                     ));
             }

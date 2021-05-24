@@ -123,6 +123,8 @@ namespace BuildCompany
                         Db.SaveChanges();
                         DataRefresh();
                         SelectedPayout = payout;
+                        var npayouts = Db.EmployeePayouts.OrderBy(npayout => npayout.IdEmployeePayout);
+                        SelectedPayout = npayouts.Last();
                     }));
             }
         }

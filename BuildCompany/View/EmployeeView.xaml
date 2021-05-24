@@ -178,15 +178,15 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Номер телефона:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedEmployee.EmployeePhoneNumber}"/>
+                <TextBox MaxLength="11" Margin="2" Text="{Binding Path=SelectedEmployee.EmployeePhoneNumber}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Почта:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedEmployee.EmployeeEmail}"/>
+                <TextBox MaxLength="128" Margin="2" Text="{Binding Path=SelectedEmployee.EmployeeEmail}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 10 2" Text="Паспортные данные:"/>
-                <TextBox Margin="2"  Text="{Binding Path=SelectedEmployee.EmployeePassportData}"/>
+                <TextBox MaxLength="10" Margin="2"  Text="{Binding Path=SelectedEmployee.EmployeePassportData}"/>
             </StackPanel>
             <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedEmployee}" Height="40"/>
         </StackPanel>

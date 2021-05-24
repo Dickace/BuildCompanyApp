@@ -115,7 +115,7 @@
         <StackPanel Grid.Column="1" >
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Номер заказа:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedOrder.OrderNumber}"/>
+                <TextBox Margin="2" MaxLength="32" Text="{Binding Path=SelectedOrder.OrderNumber}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Статус заказа:"/>
@@ -146,7 +146,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Сумма заказа:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedOrder.OrderSummary}"/>
+                <TextBox Margin="2" MaxLength="32" Text="{Binding Path=SelectedOrder.OrderSummary}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Дата окончания заказа:"/>

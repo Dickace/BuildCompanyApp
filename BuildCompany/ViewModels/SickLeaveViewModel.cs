@@ -57,12 +57,14 @@ namespace BuildCompany
                     {
                         SickleaveDatum sickleaveData = new SickleaveDatum();
                         sickleaveData.IdSickLeaveData = 0;
-                       
+                        sickleaveData.IdSickLeaveDataStatus = 0;
                         SickleaveDatas.Add(sickleaveData);
                         Db.SickleaveData.Add(sickleaveData);
                         Db.SaveChanges();
                         DataRefresh();
                         SelectedSickLeaveData = sickleaveData;
+                        var nsickleaveDatas = Db.SickleaveData.OrderBy(nsickleave => nsickleave.IdSickLeaveData);
+                        SelectedSickLeaveData = nsickleaveDatas.Last();
                     }
                     ));
             }

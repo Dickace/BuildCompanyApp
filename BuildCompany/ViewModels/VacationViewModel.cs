@@ -54,11 +54,13 @@ namespace BuildCompany
                     {
                         VacationDatum vacationData = new VacationDatum();
                         vacationData.IdVacationData = 0;
+                        vacationData.IdVacationStatus = 0;
                         vacationDatas.Add(vacationData);
                         Db.VacationData.Add(vacationData);
                         Db.SaveChanges();
                         DataRefresh();
-                        SelectedVacationData = vacationData;
+                        var nvacations = Db.VacationData.OrderBy(nvacation => nvacation.IdVacationData);
+                        SelectedVacationData = nvacations.Last();
                     }
                     ));
             }

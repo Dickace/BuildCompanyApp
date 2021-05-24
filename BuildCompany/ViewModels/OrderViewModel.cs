@@ -63,6 +63,8 @@ namespace BuildCompany
                         Db.SaveChanges();
                         DataRefresh();
                         SelectedOrder = order;
+                        var norders = Db.Orders.OrderBy(norder => norder.IdOrder);
+                        SelectedOrder = norders.Last();
                     }
                     ));
             }

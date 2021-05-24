@@ -122,7 +122,7 @@
         <StackPanel Grid.Column="1" >
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Номер Бригады:"/>
-                <TextBox Margin="2" Text="{Binding SelectedTeam.TeamNumber}" />
+                <TextBox MaxLength="32" Margin="2" Text="{Binding SelectedTeam.TeamNumber}" />
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="ФИО руководителя бригадой:"/>

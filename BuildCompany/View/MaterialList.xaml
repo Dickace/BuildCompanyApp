@@ -145,7 +145,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="2 2 20 2" Text="Количество материалов:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedMaterialList.MaterialCounts}" />
+                <TextBox MaxLength="32" Margin="2" Text="{Binding Path=SelectedMaterialList.MaterialCounts}" />
 
             </StackPanel>
 

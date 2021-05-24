@@ -62,7 +62,9 @@ namespace BuildCompany
                         Db.MaterialLists.Add(materialList);
                         Db.SaveChanges();
                         DataRefresh();
-                        SelectedMaterialList = materialList;
+                        
+                        var nmaterialLists = Db.MaterialLists.OrderBy(nmaterialList => nmaterialList.IdMaterialList);
+                        SelectedMaterialList = nmaterialLists.Last();
                     }
                     ));
             }

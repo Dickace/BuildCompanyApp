@@ -125,23 +125,23 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                     <TextBlock Margin="2 2 20 2" Text="Номер карты:"/>
-                <TextBox Margin="2"  Text="{Binding Path=SelectedPayout.EmployeeCardNumber}"/>
+                <TextBox Margin="2" MaxLength="16" Text="{Binding Path=SelectedPayout.EmployeeCardNumber}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="2 2 20 2" Text="ИНН:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedPayout.EmployeeTaxNumber}"/>
+                <TextBox MaxLength="11" Margin="2" Text="{Binding Path=SelectedPayout.EmployeeTaxNumber}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="2 2 20 2" Text="Выплата за заказ:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedPayout.PayoutForOrders}"/>
+                <TextBox MaxLength="32" Margin="2" Text="{Binding Path=SelectedPayout.PayoutForOrders}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="2 2 20 2" Text="Премии и штрафы:"/>
-                <TextBox Margin="2" Text="{Binding Path=SelectedPayout.BonusesAndFines}"/>
+                <TextBox MaxLength="32" Margin="2" Text="{Binding Path=SelectedPayout.BonusesAndFines}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Margin="2 2 20 2" Text="Общая выплата"/>
-                <TextBox IsEnabled="False" Margin="2" Text="{Binding Path=SelectedPayout.TotalPayout}"/>
+                <TextBox  IsEnabled="False" Margin="2" Text="{Binding Path=SelectedPayout.TotalPayout}"/>
                 </StackPanel>
             <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedPayout}" Height="40"/>
         </StackPanel>

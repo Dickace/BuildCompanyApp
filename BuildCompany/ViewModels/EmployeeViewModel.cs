@@ -42,7 +42,9 @@ namespace BuildCompany
                         Db.Employees.Add(employee);
                         Db.SaveChanges();
                         DataRefresh();
-                        SelectedEmployee = employee;
+                        
+                        var nemployees = Db.Employees.OrderBy(nemployee => nemployee.IdEmployee);
+                        SelectedEmployee = nemployees.Last();
                     }
                     ));
             }
