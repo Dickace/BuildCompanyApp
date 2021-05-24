@@ -134,8 +134,7 @@ namespace BuildCompany
 
 
                         }
-                    },
-                    (obj) => VacationDatas.Count > 0));
+                    }));
             }
         }
 

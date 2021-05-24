@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:BuildCompany" xmlns:col="clr-namespace:System.Collections;assembly=System.Runtime"
         xmlns:view="clr-namespace:BuildCompany.View"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="800">
+        
+        Icon="Images/Logo.ico"
+        Title="Строительная компания" MinHeight="450" MinWidth="800">
 
  
 
@@ -50,11 +52,7 @@
                 <Label  FontWeight="DemiBold" FontSize="23" Height="43" >Build Company</Label>
             </StackPanel>
             <Grid HorizontalAlignment="Right">
-                <Button Width="32" Background="SkyBlue" BorderBrush="SkyBlue" Margin="0 5 10 5">
-                    <Image Source="/Images/Close.png">
-
-                    </Image>
-                </Button>
+                
             </Grid>
             
         </Grid>

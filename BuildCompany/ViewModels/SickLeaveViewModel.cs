@@ -136,8 +136,8 @@ namespace BuildCompany
 
 
                         }
-                    },
-                    (obj) => SickleaveDatas.Count > 0));
+                    }
+                    ));
             }
         }
 

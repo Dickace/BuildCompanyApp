@@ -130,8 +130,7 @@ namespace BuildCompany
 
 
                         }
-                    },
-                    (obj) => MaterialLists.Count > 0));
+                    }));
             }
         }
 
@@ -171,26 +170,33 @@ namespace BuildCompany
         public MaterialListViewModel(){
            
             Db = new buildcompanyContext();
-            Db.MaterialLists.Load();
-            MaterialLists = Db.MaterialLists.Local.ToObservableCollection();
-
-            Db.Orders.Load();
-            Orders = Db.Orders.Local.ToObservableCollection();
-            var orderViewModels = new List<OrderViewModel>();
-            foreach (var el in Orders)
+            try
             {
-                orderViewModels.Add(new OrderViewModel(el));
-            }
-            OrderViewModels = orderViewModels;
+                Db.MaterialLists.Load();
+                MaterialLists = Db.MaterialLists.Local.ToObservableCollection();
 
-            Db.Materials.Load();
-            Materials = Db.Materials.Local.ToObservableCollection();
-            var materialViewModels = new List<MaterialViewModel>();
-            foreach (var el in Materials)
-            {
-                materialViewModels.Add(new MaterialViewModel(el));
+                Db.Orders.Load();
+                Orders = Db.Orders.Local.ToObservableCollection();
+                var orderViewModels = new List<OrderViewModel>();
+                foreach (var el in Orders)
+                {
+                    orderViewModels.Add(new OrderViewModel(el));
+                }
+                OrderViewModels = orderViewModels;
+
+                Db.Materials.Load();
+                Materials = Db.Materials.Local.ToObservableCollection();
+                var materialViewModels = new List<MaterialViewModel>();
+                foreach (var el in Materials)
+                {
+                    materialViewModels.Add(new MaterialViewModel(el));
+                }
+                MaterialViewModels = materialViewModels;
             }
-            MaterialViewModels = materialViewModels;
+            catch
+            {
+
+            }
             //Group data (bad realization)
             /*try
               {

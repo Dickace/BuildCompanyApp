@@ -143,10 +143,14 @@ namespace BuildCompany
                         {
                             Db.Teams.Load();
                             var newTeam = Db.Teams.Find(team.IdTeam);
-                            if (newTeam.IdTeam != 0)
+                            if (newTeam!=null)
                             {
-                                Db.Teams.Remove(team);
-                                Db.SaveChanges();
+                                if(newTeam.IdTeam != 0)
+                                {
+                                    Db.Teams.Remove(team);
+                                    Db.SaveChanges();
+                                }
+                                
                             }
                             else
                             {
@@ -158,8 +162,7 @@ namespace BuildCompany
 
 
                         }
-                    },
-                    (obj) => Teams.Count > 0));
+                    }));
             }
         }
         Team selectedTeam;

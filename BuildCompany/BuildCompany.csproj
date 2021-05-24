@@ -4,12 +4,27 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Test</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>Images\Logo.ico</ApplicationIcon>
+    <AssemblyName>BuildCompany</AssemblyName>
+    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>3</WarningLevel>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Basket.png" />
     <None Remove="Images\Close.png" />
     <None Remove="Images\DeleteIcon.svg" />
+    <None Remove="Images\Logo.ico" />
     <None Remove="Images\Logo.png" />
   </ItemGroup>
 
@@ -27,13 +42,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\Basket.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\Close.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\DeleteIcon.svg" />
+    <Resource Include="Images\Logo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Logo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

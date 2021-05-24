@@ -143,9 +143,9 @@
                     <TextBlock Margin="2 2 20 2" Text="Общая выплата"/>
                 <TextBox IsEnabled="False" Margin="2" Text="{Binding Path=SelectedPayout.TotalPayout}"/>
                 </StackPanel>
-                
+            <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedPayout}" Height="40"/>
         </StackPanel>
-        <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedPayout}" Height="40"/>
+       
       
     </Grid>
     

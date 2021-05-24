@@ -46,8 +46,7 @@ namespace BuildCompany
             {
                 var sett = Properties.Settings.Default;
                 
-                string connString = "server="+sett.IP + ";port=" + sett.host +";user=" +sett.login +";database="+sett.database+";password="+sett.password ;
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                string connString = "server="+ sett.IP +";port="+ sett.host +";user=" + sett.login +";database=" + sett.database+";password="+ sett.password+";";
                 optionsBuilder.UseMySql(connString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.34-mysql"));
             }
         }

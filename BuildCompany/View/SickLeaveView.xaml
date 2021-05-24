@@ -143,8 +143,8 @@
                 </DatePicker>
             </StackPanel>
 
-
+            <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedSickLeaveData}" Height="40"/>
         </StackPanel>
-        <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveCommand}" CommandParameter="{Binding SelectedSickLeaveData}" Height="40"/>
+       
     </Grid>
 </UserControl>

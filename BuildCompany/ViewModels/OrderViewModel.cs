@@ -139,8 +139,7 @@ namespace BuildCompany
                             
                        
                         }
-                    },
-                    (obj)=> Orders.Count > 0));
+                    }));
             }
         }
         public ObservableCollection<Client> Clients { get; set; }
@@ -193,42 +192,50 @@ namespace BuildCompany
         {
             
             Db = new buildcompanyContext();
-            Db.Orders.Load();
-            Orders = Db.Orders.Local.ToObservableCollection();
-
-
-            Db.Teams.Load();
-            Teams = Db.Teams.Local.ToObservableCollection();
-            var teamViewModels = new List<TeamViewModel>();
-            foreach( var el in Teams)
+            try
             {
-                if(el.IdTeamStatus != 3)
+                Db.Orders.Load();
+                Orders = Db.Orders.Local.ToObservableCollection();
+
+
+                Db.Teams.Load();
+                Teams = Db.Teams.Local.ToObservableCollection();
+                var teamViewModels = new List<TeamViewModel>();
+                foreach (var el in Teams)
                 {
-                    teamViewModels.Add(new TeamViewModel(el));
+                    if (el.IdTeamStatus != 3)
+                    {
+                        teamViewModels.Add(new TeamViewModel(el));
+                    }
+
                 }
-               
-            }
-            TeamViewModels = teamViewModels;
+                TeamViewModels = teamViewModels;
 
-            Db.OrderStatuses.Load();
-            OrderStatuses = Db.OrderStatuses.Local.ToObservableCollection();
-            var orderStatusViewModels = new List<OrderStatusViewModel>();
-            foreach (var el in OrderStatuses)
+                Db.OrderStatuses.Load();
+                OrderStatuses = Db.OrderStatuses.Local.ToObservableCollection();
+                var orderStatusViewModels = new List<OrderStatusViewModel>();
+                foreach (var el in OrderStatuses)
+                {
+                    orderStatusViewModels.Add(new OrderStatusViewModel(el));
+                }
+                OrderStatusViewModels = orderStatusViewModels;
+
+
+                Db.Clients.Load();
+                Clients = Db.Clients.Local.ToObservableCollection();
+                var clientViewModels = new List<PostClientModel>();
+                foreach (var el in Clients)
+                {
+
+                    clientViewModels.Add(new PostClientModel(el));
+                }
+                ClientViewModels = clientViewModels;
+            } 
+            catch
             {
-                orderStatusViewModels.Add(new OrderStatusViewModel(el));
-            }
-            OrderStatusViewModels = orderStatusViewModels;
 
-
-            Db.Clients.Load();
-            Clients = Db.Clients.Local.ToObservableCollection();
-            var clientViewModels = new List<PostClientModel>();
-            foreach (var el in Clients)
-            {
-                
-                clientViewModels.Add(new PostClientModel(el));
             }
-            ClientViewModels = clientViewModels;
+            
 
         }
 

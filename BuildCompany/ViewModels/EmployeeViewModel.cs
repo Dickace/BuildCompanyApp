@@ -101,8 +101,7 @@ namespace BuildCompany
 
 
                         }
-                    },
-                    (obj) => Employees.Count > 0));
+                    }));
             }
         }
 
@@ -155,39 +154,47 @@ namespace BuildCompany
         {
            
             Db = new buildcompanyContext();
-            Db.Employees.Load();
-            Employees = Db.Employees.Local.ToObservableCollection();
-
-            Db.EmployeeStatuses.Load();
-            EmployeeStatuses = Db.EmployeeStatuses.Local.ToObservableCollection();
-            var orderStatusViewModels = new List<EmployeeStatusViewModel>();
-            foreach (var el in EmployeeStatuses)
+            try
             {
-                orderStatusViewModels.Add(new EmployeeStatusViewModel(el));
-            }
-            EmployeeStatusViewModels = orderStatusViewModels;
+                Db.Employees.Load();
+                Employees = Db.Employees.Local.ToObservableCollection();
 
-            Db.EmpFunctions.Load();
-            EmployeeFunctions = Db.EmpFunctions.Local.ToObservableCollection();
-            var employeeFunctionViewModels = new List<EmployeeFunctionViewModel>();
-            foreach (var el in EmployeeFunctions)
-            {
-                employeeFunctionViewModels.Add(new EmployeeFunctionViewModel(el));
-            }
-            EmployeeFunctionViewModels = employeeFunctionViewModels;
-
-            Db.Teams.Load();
-            Teams = Db.Teams.Local.ToObservableCollection();
-            var teamViewModels = new List<TeamViewModel>();
-            foreach (var el in Teams)
-            {
-                
-                if(el.IdTeamStatus != 3)
+                Db.EmployeeStatuses.Load();
+                EmployeeStatuses = Db.EmployeeStatuses.Local.ToObservableCollection();
+                var orderStatusViewModels = new List<EmployeeStatusViewModel>();
+                foreach (var el in EmployeeStatuses)
                 {
-                    teamViewModels.Add(new TeamViewModel(el));
-                } 
+                    orderStatusViewModels.Add(new EmployeeStatusViewModel(el));
+                }
+                EmployeeStatusViewModels = orderStatusViewModels;
+
+                Db.EmpFunctions.Load();
+                EmployeeFunctions = Db.EmpFunctions.Local.ToObservableCollection();
+                var employeeFunctionViewModels = new List<EmployeeFunctionViewModel>();
+                foreach (var el in EmployeeFunctions)
+                {
+                    employeeFunctionViewModels.Add(new EmployeeFunctionViewModel(el));
+                }
+                EmployeeFunctionViewModels = employeeFunctionViewModels;
+
+                Db.Teams.Load();
+                Teams = Db.Teams.Local.ToObservableCollection();
+                var teamViewModels = new List<TeamViewModel>();
+                foreach (var el in Teams)
+                {
+
+                    if (el.IdTeamStatus != 3)
+                    {
+                        teamViewModels.Add(new TeamViewModel(el));
+                    }
+                }
+                TeamViewModels = teamViewModels;
+
             }
-            TeamViewModels = teamViewModels;
+            catch
+            {
+
+            }
 
 
         }

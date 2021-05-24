@@ -2059,11 +2059,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ForProgramming\\BC\\BuildCompany\\BuildCompany\\BuildCompany.csproj",
+      "projectUniqueName": "D:\\ForProgramming\\BC\\BuildCompanyApp\\BuildCompany\\BuildCompany.csproj",
       "projectName": "BuildCompany",
-      "projectPath": "D:\\ForProgramming\\BC\\BuildCompany\\BuildCompany\\BuildCompany.csproj",
+      "projectPath": "D:\\ForProgramming\\BC\\BuildCompanyApp\\BuildCompany\\BuildCompany.csproj",
       "packagesPath": "C:\\Users\\Roman\\.nuget\\packages\\",
-      "outputPath": "D:\\ForProgramming\\BC\\BuildCompany\\BuildCompany\\obj\\",
+      "outputPath": "D:\\ForProgramming\\BC\\BuildCompanyApp\\BuildCompany\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Roman\\AppData\\Roaming\\NuGet\\NuGet.Config",

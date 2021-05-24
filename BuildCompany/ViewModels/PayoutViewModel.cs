@@ -40,45 +40,55 @@ namespace BuildCompany
             
             
             Db = new buildcompanyContext();
-            Db.EmployeePayouts.Load(); 
-            Payouts = Db.EmployeePayouts.Local.ToObservableCollection();
-            foreach(var el in Payouts)
+            try
             {
-                el.TotalPayout = el.PayoutForOrders + el.BonusesAndFines;
-            }
-            Db.Employees.Load();
-            Employees = Db.Employees.Local.ToObservableCollection(); 
-            var postViewModels = new List<PostPayoutModel>();
-            Db.SickleaveData.Load();
-            Db.VacationData.Load();
-            foreach (var el in Employees)
-            {
-                if (el.IdEmployeeStatus !=1)
+                Db.EmployeePayouts.Load();
+                Payouts = Db.EmployeePayouts.Local.ToObservableCollection();
+                foreach (var el in Payouts)
                 {
-                    postViewModels.Add(new PostPayoutModel(el));
-                   
-                    
-                } else if (el.IdEmployeeStatus == 3)
-                {
-                    
-                    var s = Db.SickleaveData.Find(el.IdEmployee);
-                    if (s.IdSickLeaveData != 0 && s.PaidSickLeave == true)
-                    {
-                        postViewModels.Add(new PostPayoutModel(el));
-                    }
-                } else if (el.IdEmployeeStatus == 4)
-                {
-                    var s = Db.VacationData.Find(el.IdEmployee);
-                    if (s.IdVacationData != 0 && s.PaidVacation == true)
-                    {
-                        postViewModels.Add(new PostPayoutModel(el));
-                    }
+                    el.TotalPayout = el.PayoutForOrders + el.BonusesAndFines;
                 }
-                    
+                Db.Employees.Load();
+                Employees = Db.Employees.Local.ToObservableCollection();
+                var postViewModels = new List<PostPayoutModel>();
+                Db.SickleaveData.Load();
+                Db.VacationData.Load();
+                foreach (var el in Employees)
+                {
+                    if (el.IdEmployeeStatus != 1)
+                    {
+                        postViewModels.Add(new PostPayoutModel(el));
+
+
+                    }
+                    else if (el.IdEmployeeStatus == 3)
+                    {
+
+                        var s = Db.SickleaveData.Find(el.IdEmployee);
+                        if (s.IdSickLeaveData != 0 && s.PaidSickLeave == true)
+                        {
+                            postViewModels.Add(new PostPayoutModel(el));
+                        }
+                    }
+                    else if (el.IdEmployeeStatus == 4)
+                    {
+                        var s = Db.VacationData.Find(el.IdEmployee);
+                        if (s.IdVacationData != 0 && s.PaidVacation == true)
+                        {
+                            postViewModels.Add(new PostPayoutModel(el));
+                        }
+                    }
+
+                }
+                PostViewModels = postViewModels;
+
             }
-            PostViewModels = postViewModels;
-      
-           
+            catch
+            {
+
+            }
+
+
 
         }
 
@@ -169,8 +179,7 @@ namespace BuildCompany
                             Db.EmployeePayouts.Remove(payout);
                             Db.SaveChanges();
                         }
-                    },
-                    (obj) => Payouts.Count > 0));
+                    }));
             }
         }
 
