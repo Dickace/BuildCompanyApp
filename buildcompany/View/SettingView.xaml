@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BuildCompany.View.SettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BuildCompany.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="IP сервера:"/>
+                <TextBox Text="{Binding IP , UpdateSourceTrigger=PropertyChanged}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Хост:"/>
+                <TextBox Text="{Binding Hosts , UpdateSourceTrigger=PropertyChanged}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Имя БД:"/>
+                <TextBox Text="{Binding DatabaseName , UpdateSourceTrigger=PropertyChanged}" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Логин:"/>
+                <TextBox Text="{Binding Login , UpdateSourceTrigger=PropertyChanged}" Width="200"></TextBox>
+            </StackPanel>
+          
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Пароль:"/>
+                <TextBox Text="{Binding Passw , UpdateSourceTrigger=PropertyChanged}" Width="200" />
+            </StackPanel>
+
+
+           
+            <Button Content="Принять" Command="{Binding ChangeSettings}"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
