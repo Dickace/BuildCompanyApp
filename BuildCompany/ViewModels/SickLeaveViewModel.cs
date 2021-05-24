@@ -57,8 +57,11 @@ namespace BuildCompany
                     {
                         SickleaveDatum sickleaveData = new SickleaveDatum();
                         sickleaveData.IdSickLeaveData = 0;
-                        sickleaveData.IdSickLeaveDataStatus = 0;
-                        SickleaveDatas.Insert(0, sickleaveData);
+                       
+                        SickleaveDatas.Add(sickleaveData);
+                        Db.SickleaveData.Add(sickleaveData);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedSickLeaveData = sickleaveData;
                     }
                     ));
@@ -121,17 +124,18 @@ namespace BuildCompany
                         {
                             Db.SickleaveData.Load();
                             var newsickleaveData = Db.SickleaveData.Find(sickleaveData.IdSickLeaveData);
-                            if (newsickleaveData.IdSickLeaveData != 0)
+                            if (newsickleaveData != null)
                             {
                                 Db.SickleaveData.Remove(sickleaveData);
                                 Db.SaveChanges();
+                                DataRefresh();
                             }
                             else
                             {
 
                                 SickleaveDatas.Remove(sickleaveData);
 
-
+                                DataRefresh();
                             }
 
 

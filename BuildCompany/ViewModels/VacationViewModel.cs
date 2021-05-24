@@ -54,8 +54,10 @@ namespace BuildCompany
                     {
                         VacationDatum vacationData = new VacationDatum();
                         vacationData.IdVacationData = 0;
-                        vacationData.IdVacationStatus = 0;
-                        vacationDatas.Insert(0, vacationData);
+                        vacationDatas.Add(vacationData);
+                        Db.VacationData.Add(vacationData);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedVacationData = vacationData;
                     }
                     ));
@@ -119,22 +121,25 @@ namespace BuildCompany
                         {
                             Db.VacationData.Load();
                             var newVacationData = Db.VacationData.Find(vacationData.IdVacationData);
-                            if (newVacationData.IdVacationData != 0)
+                            
+                            if (newVacationData !=null)
                             {
                                 Db.VacationData.Remove(vacationData);
                                 Db.SaveChanges();
+                                DataRefresh();
+
+                             
                             }
                             else
                             {
-
                                 VacationDatas.Remove(vacationData);
-
+                                DataRefresh();
 
                             }
 
 
                         }
-                    }));
+                    },obj=> selectedVacationData!=null));
             }
         }
 

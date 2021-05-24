@@ -38,7 +38,11 @@ namespace BuildCompany
                     {
                         Team team = new Team();
                         team.IdTeam = 0;
-                        Teams.Insert(0, team);
+
+                        Teams.Add(team);
+                        Db.Teams.Add(team);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedTeam = team;
                     }
                     ));
@@ -145,10 +149,11 @@ namespace BuildCompany
                             var newTeam = Db.Teams.Find(team.IdTeam);
                             if (newTeam!=null)
                             {
-                                if(newTeam.IdTeam != 0)
+                                if(newTeam != null)
                                 {
                                     Db.Teams.Remove(team);
                                     Db.SaveChanges();
+                                    DataRefresh();
                                 }
                                 
                             }
@@ -157,7 +162,7 @@ namespace BuildCompany
 
                                 Teams.Remove(team);
 
-
+                                DataRefresh();
                             }
 
 

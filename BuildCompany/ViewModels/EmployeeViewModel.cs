@@ -38,13 +38,25 @@ namespace BuildCompany
                     {
                         Employee employee = new Employee();
                         employee.IdEmployeeStatus = 0;
-                        Employees.Insert(0, employee);
+                        Employees.Add(employee);
+                        Db.Employees.Add(employee);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedEmployee = employee;
                     }
                     ));
             }
 
         }
+
+        public void DataRefresh()
+        {
+            Db = new buildcompanyContext();
+            Db.Employees.Load();
+            Employees = Db.Employees.Local.ToObservableCollection();
+            OnPropertyChanged("Employees");
+        }
+
         public MyCommand SaveCommand
         {
 
@@ -86,16 +98,17 @@ namespace BuildCompany
                         {
                             Db.Employees.Load();
                             var newemployee = Db.Employees.Find(employee.IdEmployee);
-                            if (newemployee.IdEmployee != 0)
+                            if (newemployee != null)
                             {
                                 Db.Employees.Remove(employee);
                                 Db.SaveChanges();
+                                DataRefresh();
                             }
                             else
                             {
 
                                 Employees.Remove(employee);
-
+                                DataRefresh();
 
                             }
 

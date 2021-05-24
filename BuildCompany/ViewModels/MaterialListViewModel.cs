@@ -58,7 +58,10 @@ namespace BuildCompany
                     {
                         MaterialList materialList = new MaterialList();
                         materialList.IdMaterialList = 0;
-                        MaterialLists.Insert(0, materialList);
+                        MaterialLists.Add(materialList);
+                        Db.MaterialLists.Add(materialList);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedMaterialList = materialList;
                     }
                     ));
@@ -115,16 +118,17 @@ namespace BuildCompany
                         {
                             Db.MaterialLists.Load();
                             var newmaterialList = Db.MaterialLists.Find(materialList.IdMaterialList);
-                            if (newmaterialList.IdMaterialList != 0)
+                            if (newmaterialList != null)
                             {
                                 Db.MaterialLists.Remove(materialList);
                                 Db.SaveChanges();
+                                DataRefresh();
                             }
                             else
                             {
 
                                 MaterialLists.Remove(materialList);
-
+                                DataRefresh();
 
                             }
 

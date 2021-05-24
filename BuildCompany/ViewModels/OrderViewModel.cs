@@ -55,7 +55,10 @@ namespace BuildCompany
                     {
                         Order order = new Order();
                         order.IdOrderStatus = 0;
-                        Orders.Insert(0, order);
+                        Orders.Add(order);
+                        Db.Orders.Add(order);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedOrder = order;
                     }
                     ));
@@ -124,17 +127,18 @@ namespace BuildCompany
                         {
                             Db.Orders.Load();
                             var neworder = Db.Orders.Find(order.IdOrder);
-                            if (neworder.IdOrder != 0)
+                            if (neworder != null)
                             {
                                 Db.Orders.Remove(order);
                                 Db.SaveChanges();
+                                DataRefresh();
                             }
                             else
                             {
                                 
                                 Orders.Remove(order);
-                                
-                               
+                                DataRefresh();
+
                             }
                             
                        

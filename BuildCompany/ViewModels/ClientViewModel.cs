@@ -36,6 +36,7 @@ namespace BuildCompany
                             Client newclient = clientWindow.Client;
                             Db.Clients.Add(newclient);
                             Db.SaveChanges();
+                            DataRefresh();
                         }
                         
                     }));
@@ -65,7 +66,7 @@ namespace BuildCompany
                         if (clientWindow.ShowDialog() == true)
                         {
                             client = Db.Clients.Find(clientWindow.Client.IdClient);
-                            if (clientWindow.Client != null)
+                            if (client != null)
                             {
                                 client.ClientFirstName = clientWindow.Client.ClientFirstName;
                                 client.ClientLastName = clientWindow.Client.ClientLastName;
@@ -75,7 +76,7 @@ namespace BuildCompany
                                 Db.Entry(client).State = EntityState.Modified;
                                 
                                 Db.SaveChanges();
-                                
+                                DataRefresh();
 
                             }
                         }
@@ -97,6 +98,7 @@ namespace BuildCompany
                         
                        
                         Db.SaveChanges();
+                        DataRefresh();
                     }));
             }
         }
@@ -107,7 +109,14 @@ namespace BuildCompany
                 clients = value;
                 OnPropertyChanged("Clients");
             } }
+        public void DataRefresh()
+        {
+            Db = new buildcompanyContext();
+            Db.Clients.Load();
+            Clients = Db.Clients.Local.ToObservableCollection();
+            OnPropertyChanged("Clients");
 
+        }
 
         public ClientViewModel()
         {

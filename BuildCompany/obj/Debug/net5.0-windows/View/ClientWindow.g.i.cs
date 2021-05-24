@@ -53,7 +53,7 @@ namespace BuildCompany.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BuildCompany;V1.0.0.0;component/view/clientwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BuildCompany;component/view/clientwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\ClientWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

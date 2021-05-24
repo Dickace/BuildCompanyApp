@@ -77,7 +77,7 @@ namespace BuildCompany.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BuildCompany;V1.0.0.0;component/view/payoutview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BuildCompany;component/view/payoutview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\PayoutView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

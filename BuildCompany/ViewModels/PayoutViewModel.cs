@@ -116,7 +116,12 @@ namespace BuildCompany
                     (addCommand = new MyCommand(obj =>
                     {
                         EmployeePayout payout = new EmployeePayout();
-                        Payouts.Insert(0, payout);
+                        payout.IdEmployeePayout = 0;
+
+                        Payouts.Add(payout);
+                        Db.EmployeePayouts.Add(payout);
+                        Db.SaveChanges();
+                        DataRefresh();
                         SelectedPayout = payout;
                     }));
             }
@@ -176,9 +181,22 @@ namespace BuildCompany
                         EmployeePayout payout = obj as EmployeePayout;
                         if (payout != null)
                         {
-                            Db.EmployeePayouts.Remove(payout);
-                            Db.SaveChanges();
+                            Db.EmployeePayouts.Load();
+                            var newEmployeePayout = Db.EmployeePayouts.Find(payout.IdEmployeePayout);
+                            if(newEmployeePayout != null)
+                            {
+                                Db.EmployeePayouts.Remove(payout);
+                                Db.SaveChanges();
+                                DataRefresh();
+                            }
+                            else
+                            {
+                                Payouts.Remove(payout);
+                                DataRefresh();
+                            }
+                           
                         }
+                        
                     }));
             }
         }
