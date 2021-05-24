@@ -86,8 +86,13 @@ namespace BuildCompany
                         {
                             Db.Employees.Load();
                             var empl = Db.Employees.Find(sickleaveData.IdEmployee);
-                            empl.IdEmployeeStatus = 3;
-                            Db.Entry(empl).State = EntityState.Modified;
+
+                            if(empl != null)
+                            {
+                                empl.IdEmployeeStatus = 3;
+                                Db.Entry(empl).State = EntityState.Modified;
+                            }
+                            
 
                             sickleaveData = newsickleaveData;
                             Db.Entry(sickleaveData).State = EntityState.Modified;
@@ -100,8 +105,11 @@ namespace BuildCompany
                         {
                             Db.Employees.Load();
                             var empl = Db.Employees.Find(sickleaveData.IdEmployee);
-                            empl.IdEmployeeStatus = 3;
-                            Db.Entry(empl).State = EntityState.Modified;
+                            if (empl != null)
+                            {
+                                empl.IdEmployeeStatus = 3;
+                                Db.Entry(empl).State = EntityState.Modified;
+                            }
                             Db.SickleaveData.Add(sickleaveData);
 
                             Db.SaveChanges();

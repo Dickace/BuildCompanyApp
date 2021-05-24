@@ -30,7 +30,7 @@
                             <StackPanel Margin="5" Orientation="Vertical">
 
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Margin="2 2 20 2" Text="Статус больничного:"/>
+                                    <TextBlock Margin="2 2 20 2" Text="Статус отпуска:"/>
                                     <ComboBox 
                                           
                                         Margin="2"
@@ -55,17 +55,17 @@
                           />
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Margin="2 2 20 2" Text="Оплачивамый больничный:"/>
+                                    <TextBlock Margin="2 2 20 2" Text="Оплачивамый отпуск:"/>
                                     <CheckBox IsEnabled="False" Margin="2" IsChecked="{Binding Path=PaidVacation }" />
 
                                 </StackPanel>
                               
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Margin="2 2 20 2" Text="Дата старта больничного:"/>
+                                    <TextBlock Margin="2 2 20 2" Text="Дата старта отпуска:"/>
                                     <TextBlock  Margin="2" Text="{Binding Path=VacationStartDate, StringFormat=dd-MM-yyyy}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Margin="2 2 20 2" Text="Дата окончания больничного:"/>
+                                    <TextBlock Margin="2 2 20 2" Text="Дата окончания отпуска:"/>
                                     <TextBlock  Margin="2" Text="{Binding Path=VacationEndDate, StringFormat=dd-MM-yyyy}"/>
                                 </StackPanel>
 

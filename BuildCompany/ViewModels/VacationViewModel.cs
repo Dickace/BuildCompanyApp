@@ -82,10 +82,12 @@ namespace BuildCompany
                         {
                             Db.Employees.Load();
                             var empl = Db.Employees.Find(vacationData.IdEmployee);
-                            empl.IdEmployeeStatus = 4;
-                            Db.Entry(empl).State = EntityState.Modified;
+                            if(empl != null)
+                            {
+                                empl.IdEmployeeStatus = 4;
+                                Db.Entry(empl).State = EntityState.Modified;
+                            }
                             vacationData = newvacationData;
-                            
                             Db.Entry(vacationData).State = EntityState.Modified;
                             Db.SaveChanges();
                             DataRefresh();
@@ -96,8 +98,11 @@ namespace BuildCompany
                         {
                             Db.Employees.Load();
                             var empl = Db.Employees.Find(vacationData.IdEmployee);
-                            empl.IdEmployeeStatus = 4;
-                            Db.Entry(empl).State = EntityState.Modified;
+                            if (empl != null)
+                            {
+                                empl.IdEmployeeStatus = 4;
+                                Db.Entry(empl).State = EntityState.Modified;
+                            }
 
                             Db.VacationData.Add(vacationData);
 

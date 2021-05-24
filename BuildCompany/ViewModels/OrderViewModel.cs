@@ -54,7 +54,10 @@ namespace BuildCompany
                     (addCommand = new MyCommand(obj =>
                     {
                         Order order = new Order();
+                        
+                        var client = Db.Clients.First();
                         order.IdOrderStatus = 0;
+                        order.IdClient = client.IdClient;
                         Orders.Add(order);
                         Db.Orders.Add(order);
                         Db.SaveChanges();
