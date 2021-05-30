@@ -121,7 +121,6 @@ D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\bin\Debug\net5.0-windows\runti
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\BuildCompany.csprojAssemblyReference.cache
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\View\TeamsView.baml
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\MainWindow.g.cs
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\View\ClientsView.g.cs
@@ -162,3 +161,6 @@ D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\Build
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\ref\BuildCompany.dll
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\BuildCompany.pdb
 D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\BuildCompany.genruntimeconfig.cache
+D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\View\WellcomeView.g.cs
+D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\View\WellcomeView.baml
+D:\ForProgramming\BC\BuildCompanyApp\BuildCompany\obj\Debug\net5.0-windows\BuildCompany.csprojAssemblyReference.cache

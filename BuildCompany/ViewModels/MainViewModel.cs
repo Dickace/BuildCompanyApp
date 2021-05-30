@@ -10,6 +10,7 @@ namespace BuildCompany.ViewModels
     {
         public MainViewModel()
         {
+            CurrentViewModel = wellComeViewModel;
             NavCommand = new MyICommand<string>(OnNav);
         }
 
@@ -31,6 +32,8 @@ namespace BuildCompany.ViewModels
         private MaterialListViewModel materialListViewModel = new MaterialListViewModel();
 
         private VacationViewModel vacationViewModel = new VacationViewModel();
+
+        private WellComeViewModel wellComeViewModel = new WellComeViewModel();
 
         private Bindable _CurrentViewModel;
 
@@ -77,7 +80,7 @@ namespace BuildCompany.ViewModels
                     CurrentViewModel = vacationViewModel;
                     break;
                 default:
-                    CurrentViewModel = orderViewModel;
+                    CurrentViewModel = wellComeViewModel;
                     break;
             }
         }

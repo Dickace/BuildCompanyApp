@@ -27,6 +27,9 @@
         <DataTemplate DataType = "{x:Type local:ClientViewModel}">
             <view:ClientsView/>
         </DataTemplate>
+        <DataTemplate DataType = "{x:Type local:WellComeViewModel }">
+            <view:WellcomeView/>
+        </DataTemplate>
         <DataTemplate DataType = "{x:Type local:EmployeeViewModel}">
             <view:EmployeeView/>
         </DataTemplate>
@@ -68,7 +71,7 @@
             <Button Content="Сотрудники" Command="{Binding NavCommand}" CommandParameter="employees" Height="50">
 
             </Button>
-            <Button Content="Клиенты" Command="{Binding NavCommand}" CommandParameter="clients" Height="50">
+            <Button Content="Заказчики" Command="{Binding NavCommand}" CommandParameter="clients" Height="50">
 
             </Button>
             <Button Content="Склад"  Command="{Binding NavCommand}" CommandParameter="materials"  Height="50">

@@ -37,7 +37,7 @@
                                     <TextBlock FontSize="16" Margin="2"  Text="{Binding Path=OrderNumber}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="2" Text="ФИО клиента:"/>
+                                    <TextBlock Margin="2" Text="ФИО заказчика:"/>
                                     <ComboBox  
                                        
                                         Margin="2"
@@ -127,7 +127,7 @@
                           />
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="2 2 20 2" Text="ФИО клиента:"/>
+                <TextBlock Margin="2 2 20 2" Text="ФИО заказчика:"/>
                 <ComboBox Margin="2" 
                           ItemsSource="{Binding ClientViewModels}"
                           DisplayMemberPath="ClientName" 

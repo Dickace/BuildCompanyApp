@@ -40,7 +40,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="Клиенты" FontSize="34" HorizontalAlignment="Center"/>
+        <TextBlock Text="Заказчики" FontSize="34" HorizontalAlignment="Center"/>
 
         <ListBox x:Name="clientsList" ItemsSource="{Binding Clients}"  Grid.Row="1">
 
@@ -68,12 +68,12 @@
         <GridSplitter Grid.Row="2" ShowsPreview="False" Width="3"
         HorizontalAlignment="Stretch" VerticalAlignment="Center" />
         <StackPanel Grid.Row="3" >
-            <Button Content="Добавить клиента" Command="{Binding AddClientWindow}" Height="40">
+            <Button Content="Добавить заказчика" Command="{Binding AddClientWindow}" Height="40">
                 
                 
             </Button>
-            <Button Content="Изменить клиента" Command="{Binding EditClient}" CommandParameter="{Binding ElementName=clientsList, Path=SelectedItem}" Height="40"/>
-            <Button Content="Удалить клиента" Command="{Binding DeleteClient}" CommandParameter="{Binding ElementName=clientsList, Path=SelectedItem}" Height="40"/>
+            <Button Content="Изменить заказчика" Command="{Binding EditClient}" CommandParameter="{Binding ElementName=clientsList, Path=SelectedItem}" Height="40"/>
+            <Button Content="Удалить заказчика" Command="{Binding DeleteClient}" CommandParameter="{Binding ElementName=clientsList, Path=SelectedItem}" Height="40"/>
 
         </StackPanel>
     </Grid>

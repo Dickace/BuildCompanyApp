@@ -28,11 +28,11 @@
                     <ColumnDefinition Width="140" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Фамилия клиента" Grid.Row="0"/>
-                <TextBlock Text="Имя клиента"  Grid.Row="1"/>
-                <TextBlock Text="Отчество клиента" Grid.Row="2" />
-                <TextBlock Text="Адрес клиента" Grid.Row="3" />
-                <TextBlock Text="Описание клиента" Grid.Row="4" />
+                <TextBlock Text="Фамилия заказчика" Grid.Row="0"/>
+                <TextBlock Text="Имя заказчика"  Grid.Row="1"/>
+                <TextBlock Text="Отчество заказчика" Grid.Row="2" />
+                <TextBlock Text="Адрес заказчика" Grid.Row="3" />
+                <TextBlock Text="Описание заказчика" Grid.Row="4" />
 
                 <TextBox Text="{Binding ClientLastName}" Grid.Column="2"/>
                 <TextBox Text="{Binding ClientFirstName}" Grid.Row="1" Grid.Column="2"/>

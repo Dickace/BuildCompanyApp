@@ -61,7 +61,7 @@ namespace BuildCompany.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BuildCompany;component/view/sickleaveview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BuildCompany;V1.0.0.0;component/view/sickleaveview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\SickLeaveView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
